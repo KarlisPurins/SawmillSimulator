@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SawmillSimulator</string>
+    <string name="log_button">Log</string>
 </resources>
