@@ -5,17 +5,14 @@ import androidx.annotation.NonNull;
 public class DebarkedLog extends Wood{
     static double defaultPrice = 25;
 
-    public DebarkedLog(double defaultPrice) {
+    public DebarkedLog() {
         super("DebarkedLog", true, 1);
+        this.price = defaultPrice;
     }
 
     public static double getDefaultPrice() {
         return defaultPrice;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return this.name + "___"+ this.price + "___";
-    }
+
 }

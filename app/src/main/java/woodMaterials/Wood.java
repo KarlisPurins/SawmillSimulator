@@ -1,25 +1,27 @@
 package woodMaterials;
 
+import androidx.annotation.NonNull;
+
 public class Wood {
     String name;
     boolean isSellable;
     double price;
+    int phase; //0 - WoodLog; 1 - DebarkedLog; 2 - CantedLog; 3 - Plank
 
-    public Wood(String name, boolean isSellable, int phase){
+    public Wood(String name, boolean isSellable, int phase){ //phase - production chain phase
         this.name = name;
         this.isSellable = isSellable;
-        switch (phase){
-            case 0:
-                this.price = WoodLog.getDefaultPrice();
-            case 1:
-                this.price = DebarkedLog.getDefaultPrice();
-            case 2:
-                this.price = CantedLog.getDefaultPrice();
-            case 3:
-                this.price = Plank.getDefaultPrice();
-        }
+        this.phase = phase;
+    }
 
+    public int getPhase(){
+        return this.phase;
+    }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return this.name + "___"+ this.price + "___";
     }
 
 
