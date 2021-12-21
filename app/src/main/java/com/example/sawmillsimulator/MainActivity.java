@@ -4,18 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import engine.Inventory;
 import woodMaterials.*;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     int clickCount = 0;
-    Inventory inventory = new Inventory();
+    public static Inventory inventory = new Inventory();
     private static Application contexto;
 
     @Override
@@ -24,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         createButtonsAndTheirOnClickListeners();
         contexto = (Application) this.getApplicationContext();
+        //Jānodefinē pareizi textViews un jāsaglabā money ir kaut kādā failā.
+        TextView tv = findViewById(R.id.txtMoneyAmount_Main);
+        tv.setText(""+inventory.getMoney());
     }
 
     @Override
@@ -52,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 toast.setText(inventory.toString());
                 toast.show();
                 break;
-
             case R.id.btnAddDebLog:
                 DebarkedLog dl = new DebarkedLog();
                 if (clickCount == 0) {
@@ -63,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 toast.setText(inventory.toString());
                 toast.show();
                 break;
-
             case R.id.btnAddCantLog:
                 CantedLog cl = new CantedLog();
                 if (clickCount == 0) {
@@ -74,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 toast.setText(inventory.toString());
                 toast.show();
                 break;
-
             case R.id.btnAddPlank:
                 Plank pl = new Plank();
                 if (clickCount == 0) {
@@ -85,7 +89,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 toast.setText(inventory.toString());
                 toast.show();
                 break;
-
+            case R.id.btnToOrders:
+                toast.setText("Goin to Orders");
+                toast.show();
+                goToOrders();
+                break;
 
         }
     }
@@ -129,5 +137,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAddCantLog.setOnClickListener(this);
         Button btnAddPlank = (Button) findViewById(R.id.btnAddPlank);
         btnAddPlank.setOnClickListener(this);
+        Button btnToOrders = (Button) findViewById(R.id.btnToOrders);
+        btnToOrders.setOnClickListener(this);
+    }
+
+    private void goToOrders() {
+        Intent switchActivityIntent = new Intent(this, OrdersActivity.class);
+        startActivity(switchActivityIntent);
     }
 }

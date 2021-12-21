@@ -9,4 +9,7 @@
     <string name="removeDebarkedLog_button">Remove DebarkedLog</string>
     <string name="removeCantedLog_button">Remove CantedLog</string>
     <string name="removePlank_button">Remove Plank</string>
+    <string name="to_orders_button">To Orders</string>
+    <string name="back_button">Back</string>
+    <string name="acceptOrder_button">Accept \nOrder</string>
 </resources>

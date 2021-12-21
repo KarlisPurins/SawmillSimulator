@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import woodMaterials.*;
 
 public class Inventory {
+    double money;
     ArrayList<ArrayList<Object>> materials = new ArrayList<ArrayList<Object>>();
     ArrayList<WoodLog> woodLogs;
     ArrayList<DebarkedLog> debarkedLogs;
@@ -17,6 +18,7 @@ public class Inventory {
     ArrayList<Plank> planks;
 
     public Inventory(){
+        this.money = 0;
         this.woodLogs = new ArrayList<WoodLog>();
         this.debarkedLogs = new ArrayList<DebarkedLog>();
         this.cantedLogs = new ArrayList<CantedLog>();
@@ -38,6 +40,9 @@ public class Inventory {
     public ArrayList<Plank> getPlanks(){
         return this.planks;
     }
+
+    public double getMoney(){return this.money;}
+    public void addMoney(double add){this.money += add;}
 
 
 
