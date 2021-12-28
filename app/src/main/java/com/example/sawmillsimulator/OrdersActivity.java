@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import engine.Order;
@@ -52,22 +50,26 @@ public class OrdersActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnOrder1Acc:
                 if(inventoryHasEverything(toast, 0)){
-                    MainActivity.inventory.addMoney(orders.get(0).getPrice());
-                    removeOrderItemsFromInventory(0);
+                    MainActivity.inventory.addMoney(orders.get(0).getPrice()); //Can replace these lines with CompleteOrder method
+                    removeOrderItemsFromInventory(0);               // as code optimization
+                    removeOrder(0, R.id.btnOrder1Acc, view);        //
+                    showOrderAcceptToast(toast);                               //
                 }
-
                 break;
             case R.id.btnOrder2Acc:
                 if(inventoryHasEverything(toast, 1)){
                     MainActivity.inventory.addMoney(orders.get(1).getPrice());
                     removeOrderItemsFromInventory(1);
+                    removeOrder(1, R.id.btnOrder2Acc, view);
+                    showOrderAcceptToast(toast);
                 }
-
                 break;
             case R.id.btnOrder3Acc:
                 if(inventoryHasEverything(toast, 2)){
                     MainActivity.inventory.addMoney(orders.get(2).getPrice());
                     removeOrderItemsFromInventory(2);
+                    removeOrder(2, R.id.btnOrder3Acc, view);
+                    showOrderAcceptToast(toast);
                 }
                 break;
         }
@@ -134,5 +136,20 @@ public class OrdersActivity extends AppCompatActivity implements View.OnClickLis
         for(int i=0; i<orders.get(orderNumber).getPlankCount(); i++){
             MainActivity.inventory.getPlanks().remove(0);
         }
+    }
+
+    private void showOrderAcceptToast(Toast toast){
+        toast.setText("Order sent!");
+        toast.show();
+    }
+
+    void removeOrder(int orderNumber, int buttonId, View view){
+        textViews.get(orderNumber).setText(""); //"Deletes" order text
+        hideButton(buttonId, view);
+    }
+
+    private void hideButton(int id, View view){
+        Button btn = (Button) findViewById(id);
+        btn.setVisibility(view.INVISIBLE);
     }
 }

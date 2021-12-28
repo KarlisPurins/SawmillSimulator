@@ -20,8 +20,8 @@
         android:id="@+id/btnAddLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="10dp"
         android:onClick="onClick"
         android:text="@string/addLog_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,8 +31,8 @@
         android:id="@+id/btnAddDebLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="70dp"
         android:onClick="onClick"
         android:text="@string/addDebarkedLog_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +42,8 @@
         android:id="@+id/btnAddCantLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="130dp"
         android:onClick="onClick"
         android:text="@string/addCantedLog_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,8 +53,8 @@
         android:id="@+id/btnAddPlank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="190dp"
         android:onClick="onClick"
         android:text="@string/addPlank_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,5 +80,45 @@
         android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtWoodLogs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtDebLogs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="75dp"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCantedLogs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="135dp"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPlanks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="195dp"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

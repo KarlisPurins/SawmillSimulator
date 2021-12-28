@@ -28,9 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         createButtonsAndTheirOnClickListeners();
         contexto = (Application) this.getApplicationContext();
-        //Jānodefinē pareizi textViews un jāsaglabā money ir kaut kādā failā.
-        TextView tv = findViewById(R.id.txtMoneyAmount_Main);
-        tv.setText(""+inventory.getMoney());
+        //jāsaglabā money ir kaut kādā failā.
+        setTextViewText();
     }
 
     @Override
@@ -56,8 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     inventory.removeMaterial(lg);
                 }
-                toast.setText(inventory.toString());
-                toast.show();
+                setTextViewText();
                 break;
             case R.id.btnAddDebLog:
                 DebarkedLog dl = new DebarkedLog();
@@ -66,8 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     inventory.removeMaterial(dl);
                 }
-                toast.setText(inventory.toString());
-                toast.show();
+                setTextViewText();
                 break;
             case R.id.btnAddCantLog:
                 CantedLog cl = new CantedLog();
@@ -76,8 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     inventory.removeMaterial(cl);
                 }
-                toast.setText(inventory.toString());
-                toast.show();
+                setTextViewText();
                 break;
             case R.id.btnAddPlank:
                 Plank pl = new Plank();
@@ -86,8 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     inventory.removeMaterial(pl);
                 }
-                toast.setText(inventory.toString());
-                toast.show();
+                setTextViewText();
                 break;
             case R.id.btnToOrders:
                 toast.setText("Goin to Orders");
@@ -106,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
+    //Changes button texts from "add" to "remove" and vice versa
     private void changeButtonTexts() {
         Button btnAddLog = (Button) findViewById(R.id.btnAddLog);
         Button btnAddDebLog = (Button) findViewById(R.id.btnAddDebLog);
@@ -144,5 +139,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void goToOrders() {
         Intent switchActivityIntent = new Intent(this, OrdersActivity.class);
         startActivity(switchActivityIntent);
+    }
+
+    private void setTextViewText(){
+        TextView tv = findViewById(R.id.txtMoneyAmount_Main);
+        tv.setText(""+inventory.getMoney());
+        TextView woodLogs = findViewById(R.id.txtWoodLogs);
+        woodLogs.setText("Logs: " + inventory.getWoodLogs().size());
+        TextView debLogs = findViewById(R.id.txtDebLogs);
+        debLogs.setText("Debarked Logs: " + inventory.getDebarkedLogs().size());
+        TextView cantedLogs = findViewById(R.id.txtCantedLogs);
+        cantedLogs.setText("Canted Logs: " + inventory.getCantedLogs().size());
+        TextView planks = findViewById(R.id.txtPlanks);
+        planks.setText("Planks: " + inventory.getPlanks().size());
     }
 }
