@@ -6,6 +6,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +48,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         view.setEnabled(false);
 
         Timer buttonTimer = new Timer();
+
+        TextView textLogTimer = (TextView)findViewById(R.id.textLogTimer);
+        TextView textDebarkedLogTimer = (TextView)findViewById(R.id.textDebarkedLogTimer);
+        TextView textCantedLogTimer = (TextView)findViewById(R.id.textCantedLogTimer);
+        TextView textPlankTimer = (TextView)findViewById(R.id.textPlankTimer);
+
         buttonTimer.schedule(new TimerTask() {
 
             @Override
@@ -78,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     inventory.removeMaterial(lg);
                 }
+                countdownTimer(textLogTimer);
                 setTextViewText();
                 break;
             case R.id.btnAddDebLog:
@@ -87,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     inventory.removeMaterial(dl);
                 }
+                countdownTimer(textDebarkedLogTimer);
                 setTextViewText();
                 break;
             case R.id.btnAddCantLog:
@@ -96,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     inventory.removeMaterial(cl);
                 }
+                countdownTimer(textCantedLogTimer);
                 setTextViewText();
                 break;
             case R.id.btnAddPlank:
@@ -105,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     inventory.removeMaterial(pl);
                 }
+                countdownTimer(textPlankTimer);
                 setTextViewText();
                 break;
             case R.id.btnToOrders:
@@ -114,6 +125,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
         }
+
+    }
+
+    public void countdownTimer(TextView text) {
+        final int[] time = {5};
+        new CountDownTimer(5000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                text.setText("0:"+checkDigit(time[0]));
+                time[0]--;
+            }
+
+            public void onFinish() {
+                text.setText("");
+            }
+        }.start();
+    }
+
+    public String checkDigit(int number) {
+        return number <= 9 ? "0" + number : String.valueOf(number);
     }
 
     public static void makeToast(CharSequence text) {
