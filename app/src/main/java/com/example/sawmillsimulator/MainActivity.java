@@ -11,8 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Handler;
 
 import org.w3c.dom.Text;
+
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 import engine.Inventory;
 import woodMaterials.*;
@@ -38,6 +43,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         CharSequence text = "Hello toast!";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
+
+        view.setEnabled(false);
+
+        Timer buttonTimer = new Timer();
+        buttonTimer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        view.setEnabled(true);
+                    }
+                });
+            }
+        }, 5000);
+
         switch (view.getId()) {
             case R.id.btnLog:
                 if (clickCount == 0) {
@@ -124,14 +147,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void createButtonsAndTheirOnClickListeners() {
         Button btnLog = (Button) findViewById(R.id.btnLog);
         btnLog.setOnClickListener(this);
+
         Button btnAddLog = (Button) findViewById(R.id.btnAddLog);
         btnAddLog.setOnClickListener(this);
+
         Button btnAddDebLog = (Button) findViewById(R.id.btnAddDebLog);
         btnAddDebLog.setOnClickListener(this);
+
         Button btnAddCantLog = (Button) findViewById(R.id.btnAddCantLog);
         btnAddCantLog.setOnClickListener(this);
+
         Button btnAddPlank = (Button) findViewById(R.id.btnAddPlank);
         btnAddPlank.setOnClickListener(this);
+
         Button btnToOrders = (Button) findViewById(R.id.btnToOrders);
         btnToOrders.setOnClickListener(this);
     }
