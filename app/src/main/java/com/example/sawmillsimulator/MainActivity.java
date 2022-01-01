@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
 
-        view.setEnabled(false);
-
         Timer buttonTimer = new Timer();
 
         TextView textLogTimer = (TextView)findViewById(R.id.textLogTimer);
@@ -79,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.btnAddLog:
+                view.setEnabled(false);
                 WoodLog lg = new WoodLog();
                 if (clickCount == 0) {
                     inventory.addMaterial(lg);
@@ -89,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setTextViewText();
                 break;
             case R.id.btnAddDebLog:
+                view.setEnabled(false);
                 DebarkedLog dl = new DebarkedLog();
                 if (clickCount == 0) {
                     inventory.addMaterial(dl);
@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setTextViewText();
                 break;
             case R.id.btnAddCantLog:
+                view.setEnabled(false);
                 CantedLog cl = new CantedLog();
                 if (clickCount == 0) {
                     inventory.addMaterial(cl);
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setTextViewText();
                 break;
             case R.id.btnAddPlank:
+                view.setEnabled(false);
                 Plank pl = new Plank();
                 if (clickCount == 0) {
                     inventory.addMaterial(pl);
