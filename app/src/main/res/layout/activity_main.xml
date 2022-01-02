@@ -181,7 +181,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="textDebarkedLogTimer" />
+        app:constraint_referenced_ids="textDebarkedLogTimer"
+        tools:layout_editor_absoluteY="84dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -195,14 +196,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="left"
-        app:constraint_referenced_ids="textDebarkedLogTimer" />
+        app:constraint_referenced_ids="textDebarkedLogTimer"
+        tools:layout_editor_absoluteX="356dp" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="textCantedLogTimer" />
+        app:constraint_referenced_ids="textCantedLogTimer"
+        tools:layout_editor_absoluteY="144dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -224,5 +227,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBarLog"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="319dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,11 +2,15 @@ package com.example.sawmillsimulator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +46,10 @@ public class OrdersActivity extends AppCompatActivity implements View.OnClickLis
         CharSequence text = "Hello toast!";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
+
+        /*ProgressBar progressBarAcceptOrder = (ProgressBar)findViewById(R.id.progressBarLog);
+        progressBarAnimation(progressBarAcceptOrder);*/
+
         switch (view.getId()) {
             case R.id.btnBackInOrders:
                 toast.setText("Goin to Main");
@@ -79,6 +87,26 @@ public class OrdersActivity extends AppCompatActivity implements View.OnClickLis
         Intent switchActivityIntent = new Intent(this, MainActivity.class);
         startActivity(switchActivityIntent);
     }
+
+   /* public void progressBarAnimation(ProgressBar progressBar) {
+        progressBar.setVisibility(View.VISIBLE);
+        ValueAnimator animator = ValueAnimator.ofInt(0, progressBar.getMax());
+        animator.setDuration(5000);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation){
+                progressBar.setProgress((Integer)animation.getAnimatedValue());
+            }
+        });
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        });
+        animator.start();
+    }*/
 
     private void createButtonsAndTheirOnClickListeners() {
         Button btnBack = (Button) findViewById(R.id.btnBackInOrders);
