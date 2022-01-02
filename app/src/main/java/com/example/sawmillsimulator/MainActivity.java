@@ -49,12 +49,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
 
-        Timer buttonTimer = new Timer();
-
         TextView textLogTimer = (TextView)findViewById(R.id.textLogTimer);
         TextView textDebarkedLogTimer = (TextView)findViewById(R.id.textDebarkedLogTimer);
         TextView textCantedLogTimer = (TextView)findViewById(R.id.textCantedLogTimer);
         TextView textPlankTimer = (TextView)findViewById(R.id.textPlankTimer);
+
+        Timer buttonTimer = new Timer();
 
         buttonTimer.schedule(new TimerTask() {
 
@@ -81,39 +81,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.btnAddLog:
-                view.setEnabled(false);
                 WoodLog lg = new WoodLog();
                 if (clickCount == 0) {
-                    ctAddLog(textLogTimer, inventory, lg);
+                    ctAddLog(textLogTimer, inventory, lg, view);
                 } else {
-                    ctRemoveLog(textLogTimer, inventory, lg);
+                    ctRemoveLog(textLogTimer, inventory, lg, view);
                 }
                 break;
             case R.id.btnAddDebLog:
-                view.setEnabled(false);
                 DebarkedLog dl = new DebarkedLog();
                 if (clickCount == 0) {
-                    ctCraftDebarkedLog(textDebarkedLogTimer, inventory, dl);
+                    ctCraftDebarkedLog(textDebarkedLogTimer, inventory, dl, view);
                 } else {
-                    ctRemoveDebarkedLog(textLogTimer, inventory, dl);
+                    ctRemoveDebarkedLog(textLogTimer, inventory, dl, view);
                 }
                 break;
             case R.id.btnAddCantLog:
-                view.setEnabled(false);
                 CantedLog cl = new CantedLog();
                 if (clickCount == 0) {
-                    ctCraftCantedLog(textCantedLogTimer, inventory, cl);
+                    ctCraftCantedLog(textCantedLogTimer, inventory, cl, view);
                 } else {
-                    ctRemoveCantedLog(textLogTimer, inventory, cl);
+                    ctRemoveCantedLog(textLogTimer, inventory, cl, view);
                 }
                 break;
             case R.id.btnAddPlank:
-                view.setEnabled(false);
                 Plank pl = new Plank();
                 if (clickCount == 0) {
-                    ctCraftPlank(textPlankTimer, inventory, pl);
+                    ctCraftPlank(textPlankTimer, inventory, pl, view);
                 } else {
-                    ctRemovePlank(textLogTimer, inventory, pl);
+                    ctRemovePlank(textLogTimer, inventory, pl, view);
                 }
                 break;
             case R.id.btnToOrders:
@@ -124,7 +120,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void ctAddLog(TextView text, Inventory inventory, WoodLog lg) {
+    public void ctAddLog(TextView text, Inventory inventory, WoodLog lg, View view) {
+            view.setEnabled(false);
             final int[] time = {5};
             new CountDownTimer(5000, 1000) {
 
@@ -141,10 +138,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }.start();
         }
 
-    public void ctCraftDebarkedLog(TextView text, Inventory inventory, DebarkedLog dl) {
+    public void ctCraftDebarkedLog(TextView text, Inventory inventory, DebarkedLog dl, View view) {
         if(inventory.getWoodLogs().size() <= 0) {
             MainActivity.makeToast("There are no logs in the Inventory");
         } else {
+            view.setEnabled(false);
             final int[] time = {5};
             new CountDownTimer(5000, 1000) {
 
@@ -162,10 +160,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void ctCraftCantedLog(TextView text, Inventory inventory, CantedLog cl) {
+    public void ctCraftCantedLog(TextView text, Inventory inventory, CantedLog cl, View view) {
         if(inventory.getDebarkedLogs().size() <= 0) {
             MainActivity.makeToast("There are no debarked logs in the Inventory");
         } else {
+            view.setEnabled(false);
             final int[] time = {5};
             new CountDownTimer(5000, 1000) {
 
@@ -183,10 +182,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void ctCraftPlank(TextView text, Inventory inventory, Plank pl) {
+    public void ctCraftPlank(TextView text, Inventory inventory, Plank pl, View view) {
         if (inventory.getCantedLogs().size() <= 0) {
             MainActivity.makeToast("There are no canted logs in the Inventory");
         } else {
+            view.setEnabled(false);
             final int[] time = {5};
             new CountDownTimer(5000, 1000) {
 
@@ -203,10 +203,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }.start();
         }
     }
-    public void ctRemoveLog(TextView text, Inventory inventory, WoodLog lg) {
+    public void ctRemoveLog(TextView text, Inventory inventory, WoodLog lg, View view) {
         if (inventory.getWoodLogs().size() <= 0) {
             MainActivity.makeToast("There are no logs to remove in the Inventory");
         } else {
+            view.setEnabled(false);
             final int[] time = {5};
             new CountDownTimer(5000, 1000) {
 
@@ -223,10 +224,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }.start();
         }
     }
-    public void ctRemoveDebarkedLog(TextView text, Inventory inventory, DebarkedLog dl) {
+    public void ctRemoveDebarkedLog(TextView text, Inventory inventory, DebarkedLog dl, View view) {
         if (inventory.getDebarkedLogs().size() <= 0) {
             MainActivity.makeToast("There are no debarked logs to remove in the Inventory");
         } else {
+            view.setEnabled(false);
             final int[] time = {5};
             new CountDownTimer(5000, 1000) {
 
@@ -243,10 +245,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }.start();
         }
     }
-    public void ctRemoveCantedLog(TextView text, Inventory inventory, CantedLog cl) {
+    public void ctRemoveCantedLog(TextView text, Inventory inventory, CantedLog cl, View view) {
         if (inventory.getCantedLogs().size() <= 0) {
             MainActivity.makeToast("There are no canted logs to remove in the Inventory");
         } else {
+            view.setEnabled(false);
             final int[] time = {5};
             new CountDownTimer(5000, 1000) {
 
@@ -263,10 +266,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }.start();
         }
     }
-    public void ctRemovePlank(TextView text, Inventory inventory, Plank pl) {
+    public void ctRemovePlank(TextView text, Inventory inventory, Plank pl, View view) {
         if (inventory.getPlanks().size() <= 0) {
             MainActivity.makeToast("There are no planks to remove in the Inventory");
         } else {
+            view.setEnabled(false);
             final int[] time = {5};
             new CountDownTimer(5000, 1000) {
 
