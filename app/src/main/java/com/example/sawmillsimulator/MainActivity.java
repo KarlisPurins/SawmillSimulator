@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 view.setEnabled(false);
                 DebarkedLog dl = new DebarkedLog();
                 if (clickCount == 0) {
-                    ctAddDebarkedLog(textDebarkedLogTimer, inventory, dl);
+                    ctCraftDebarkedLog(textDebarkedLogTimer, inventory, dl);
                 } else {
                     ctRemoveDebarkedLog(textLogTimer, inventory, dl);
                 }
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 view.setEnabled(false);
                 CantedLog cl = new CantedLog();
                 if (clickCount == 0) {
-                    ctAddCantedLog(textCantedLogTimer, inventory, cl);
+                    ctCraftCantedLog(textCantedLogTimer, inventory, cl);
                 } else {
                     ctRemoveCantedLog(textLogTimer, inventory, cl);
                 }
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 view.setEnabled(false);
                 Plank pl = new Plank();
                 if (clickCount == 0) {
-                    ctAddPlank(textPlankTimer, inventory, pl);
+                    ctCraftPlank(textPlankTimer, inventory, pl);
                 } else {
                     ctRemovePlank(textLogTimer, inventory, pl);
                 }
@@ -125,141 +125,164 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void ctAddLog(TextView text, Inventory inventory, WoodLog lg) {
-        final int[] time = {5};
-        new CountDownTimer(5000, 1000) {
+            final int[] time = {5};
+            new CountDownTimer(5000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                text.setText("0:"+checkDigit(time[0]));
-                time[0]--;
-            }
+                public void onTick(long millisUntilFinished) {
+                    text.setText("0:"+checkDigit(time[0]));
+                    time[0]--;
+                }
 
-            public void onFinish() {
-                text.setText("");
-                inventory.addMaterial(lg);
-                setTextViewText();
-            }
-        }.start();
+                public void onFinish() {
+                    text.setText("");
+                    inventory.addMaterial(lg);
+                    setTextViewText();
+                }
+            }.start();
+        }
+
+    public void ctCraftDebarkedLog(TextView text, Inventory inventory, DebarkedLog dl) {
+        if(inventory.getWoodLogs().size() <= 0) {
+            MainActivity.makeToast("There are no logs in the Inventory");
+        } else {
+            final int[] time = {5};
+            new CountDownTimer(5000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    text.setText("0:"+checkDigit(time[0]));
+                    time[0]--;
+                }
+
+                public void onFinish() {
+                    text.setText("");
+                    inventory.addMaterial(dl);
+                    setTextViewText();
+                }
+            }.start();
+        }
     }
 
-    public void ctAddDebarkedLog(TextView text, Inventory inventory, DebarkedLog dl) {
-        final int[] time = {5};
-        new CountDownTimer(5000, 1000) {
+    public void ctCraftCantedLog(TextView text, Inventory inventory, CantedLog cl) {
+        if(inventory.getDebarkedLogs().size() <= 0) {
+            MainActivity.makeToast("There are no debarked logs in the Inventory");
+        } else {
+            final int[] time = {5};
+            new CountDownTimer(5000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                text.setText("0:"+checkDigit(time[0]));
-                time[0]--;
-            }
+                public void onTick(long millisUntilFinished) {
+                    text.setText("0:"+checkDigit(time[0]));
+                    time[0]--;
+                }
 
-            public void onFinish() {
-                text.setText("");
-                inventory.addMaterial(dl);
-                setTextViewText();
-            }
-        }.start();
+                public void onFinish() {
+                    text.setText("");
+                    inventory.addMaterial(cl);
+                    setTextViewText();
+                }
+            }.start();
+        }
     }
 
-    public void ctAddCantedLog(TextView text, Inventory inventory, CantedLog cl) {
-        final int[] time = {5};
-        new CountDownTimer(5000, 1000) {
+    public void ctCraftPlank(TextView text, Inventory inventory, Plank pl) {
+        if (inventory.getCantedLogs().size() <= 0) {
+            MainActivity.makeToast("There are no canted logs in the Inventory");
+        } else {
+            final int[] time = {5};
+            new CountDownTimer(5000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                text.setText("0:"+checkDigit(time[0]));
-                time[0]--;
-            }
+                public void onTick(long millisUntilFinished) {
+                    text.setText("0:" + checkDigit(time[0]));
+                    time[0]--;
+                }
 
-            public void onFinish() {
-                text.setText("");
-                inventory.addMaterial(cl);
-                setTextViewText();
-            }
-        }.start();
+                public void onFinish() {
+                    text.setText("");
+                    inventory.addMaterial(pl);
+                    setTextViewText();
+                }
+            }.start();
+        }
     }
-
-    public void ctAddPlank(TextView text, Inventory inventory, Plank pl) {
-        final int[] time = {5};
-        new CountDownTimer(5000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                text.setText("0:"+checkDigit(time[0]));
-                time[0]--;
-            }
-
-            public void onFinish() {
-                text.setText("");
-                inventory.addMaterial(pl);
-                setTextViewText();
-            }
-        }.start();
-    }
-
     public void ctRemoveLog(TextView text, Inventory inventory, WoodLog lg) {
-        final int[] time = {5};
-        new CountDownTimer(5000, 1000) {
+        if (inventory.getWoodLogs().size() <= 0) {
+            MainActivity.makeToast("There are no logs to remove in the Inventory");
+        } else {
+            final int[] time = {5};
+            new CountDownTimer(5000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                text.setText("0:"+checkDigit(time[0]));
-                time[0]--;
-            }
+                public void onTick(long millisUntilFinished) {
+                    text.setText("0:" + checkDigit(time[0]));
+                    time[0]--;
+                }
 
-            public void onFinish() {
-                text.setText("");
-                inventory.removeMaterial(lg);
-                setTextViewText();
-            }
-        }.start();
+                public void onFinish() {
+                    text.setText("");
+                    inventory.removeMaterial(lg);
+                    setTextViewText();
+                }
+            }.start();
+        }
     }
-
     public void ctRemoveDebarkedLog(TextView text, Inventory inventory, DebarkedLog dl) {
-        final int[] time = {5};
-        new CountDownTimer(5000, 1000) {
+        if (inventory.getDebarkedLogs().size() <= 0) {
+            MainActivity.makeToast("There are no debarked logs to remove in the Inventory");
+        } else {
+            final int[] time = {5};
+            new CountDownTimer(5000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                text.setText("0:"+checkDigit(time[0]));
-                time[0]--;
-            }
+                public void onTick(long millisUntilFinished) {
+                    text.setText("0:" + checkDigit(time[0]));
+                    time[0]--;
+                }
 
-            public void onFinish() {
-                text.setText("");
-                inventory.removeMaterial(dl);
-                setTextViewText();
-            }
-        }.start();
+                public void onFinish() {
+                    text.setText("");
+                    inventory.removeMaterial(dl);
+                    setTextViewText();
+                }
+            }.start();
+        }
     }
-
     public void ctRemoveCantedLog(TextView text, Inventory inventory, CantedLog cl) {
-        final int[] time = {5};
-        new CountDownTimer(5000, 1000) {
+        if (inventory.getCantedLogs().size() <= 0) {
+            MainActivity.makeToast("There are no canted logs to remove in the Inventory");
+        } else {
+            final int[] time = {5};
+            new CountDownTimer(5000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                text.setText("0:"+checkDigit(time[0]));
-                time[0]--;
-            }
+                public void onTick(long millisUntilFinished) {
+                    text.setText("0:" + checkDigit(time[0]));
+                    time[0]--;
+                }
 
-            public void onFinish() {
-                text.setText("");
-                inventory.removeMaterial(cl);
-                setTextViewText();
-            }
-        }.start();
+                public void onFinish() {
+                    text.setText("");
+                    inventory.removeMaterial(cl);
+                    setTextViewText();
+                }
+            }.start();
+        }
     }
-
     public void ctRemovePlank(TextView text, Inventory inventory, Plank pl) {
-        final int[] time = {5};
-        new CountDownTimer(5000, 1000) {
+        if (inventory.getPlanks().size() <= 0) {
+            MainActivity.makeToast("There are no planks to remove in the Inventory");
+        } else {
+            final int[] time = {5};
+            new CountDownTimer(5000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                text.setText("0:"+checkDigit(time[0]));
-                time[0]--;
-            }
+                public void onTick(long millisUntilFinished) {
+                    text.setText("0:" + checkDigit(time[0]));
+                    time[0]--;
+                }
 
-            public void onFinish() {
-                text.setText("");
-                inventory.removeMaterial(pl);
-                setTextViewText();
-            }
-        }.start();
+                public void onFinish() {
+                    text.setText("");
+                    inventory.removeMaterial(pl);
+                    setTextViewText();
+                }
+            }.start();
+        }
     }
-
     public String checkDigit(int number) {
         return number <= 9 ? "0" + number : String.valueOf(number);
     }

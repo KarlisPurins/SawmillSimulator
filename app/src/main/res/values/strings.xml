@@ -2,9 +2,9 @@
     <string name="app_name">SawmillSimulator</string>
     <string name="log_button">Switch Add/Remove</string>
     <string name="addLog_button">Add Log</string>
-    <string name="addDebarkedLog_button">Add DebarkedLog</string>
-    <string name="addCantedLog_button">Add CantedLog</string>
-    <string name="addPlank_button">Add Plank</string>
+    <string name="addDebarkedLog_button">Craft DebarkedLog</string>
+    <string name="addCantedLog_button">Craft CantedLog</string>
+    <string name="addPlank_button">Craft Plank</string>
     <string name="removeLog_button">Remove Log</string>
     <string name="removeDebarkedLog_button">Remove DebarkedLog</string>
     <string name="removeCantedLog_button">Remove CantedLog</string>

@@ -54,13 +54,28 @@ public class Inventory {
                 this.woodLogs.add((WoodLog) woodToAdd);
                 break;
             case 1:
-                this.debarkedLogs.add((DebarkedLog) woodToAdd);
+                if(woodLogs.size() <= 0){
+                    MainActivity.makeToast("There are no logs in the Inventory");
+                } else {
+                    this.debarkedLogs.add((DebarkedLog) woodToAdd);
+                    this.woodLogs.remove(woodLogs.size()-1);
+                }
                 break;
             case 2:
-                this.cantedLogs.add((CantedLog) woodToAdd);
+                if(debarkedLogs.size() <= 0){
+                    MainActivity.makeToast("There are no debarked logs in the Inventory");
+                } else {
+                    this.cantedLogs.add((CantedLog) woodToAdd);
+                    this.debarkedLogs.remove(debarkedLogs.size()-1);
+                }
                 break;
             case 3:
-                this.planks.add((Plank) woodToAdd);
+                if(cantedLogs.size() <= 0) {
+                    MainActivity.makeToast("There are no canted logs in the Inventory");
+                } else {
+                    this.planks.add((Plank) woodToAdd);
+                    this.cantedLogs.remove(cantedLogs.size()-1);
+                }
                 break;
         }
     }
