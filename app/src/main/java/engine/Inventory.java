@@ -52,6 +52,7 @@ public class Inventory {
         switch (woodToAdd.getPhase()){
             case 0:
                 this.woodLogs.add((WoodLog) woodToAdd);
+                this.money = money - 10;
                 break;
             case 1:
                 if(woodLogs.size() <= 0){
@@ -71,9 +72,11 @@ public class Inventory {
                 break;
             case 3:
                 if(cantedLogs.size() <= 0) {
-                    MainActivity.makeToast("There are no canted logs in the Inventory");
+                    MainActivity.makeToast("There are not enough canted logs in the Inventory to craft a Plank");
                 } else {
-                    this.planks.add((Plank) woodToAdd);
+                    for (int i = 0; i < 5; i++) {
+                        this.planks.add((Plank) woodToAdd);
+                    }
                     this.cantedLogs.remove(cantedLogs.size()-1);
                 }
                 break;

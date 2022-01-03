@@ -10,6 +10,9 @@
     <string name="removeCantedLog_button">Remove CantedLog</string>
     <string name="removePlank_button">Remove Plank</string>
     <string name="to_orders_button">To Orders</string>
+    <string name="to_work_button">To Work</string>
+    <string name="to_inventory_button">To Inventory</string>
     <string name="back_button">Back</string>
     <string name="acceptOrder_button">Accept \nOrder</string>
+    <string name="clicked">+0.10$</string>
 </resources>

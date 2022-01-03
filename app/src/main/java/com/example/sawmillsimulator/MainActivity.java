@@ -2,27 +2,19 @@ package com.example.sawmillsimulator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.os.Handler;
 
-import org.w3c.dom.Text;
-
+import java.text.DecimalFormat;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 import engine.Inventory;
 import woodMaterials.*;
@@ -31,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int clickCount = 0;
     public static Inventory inventory = new Inventory();
     private static Application contexto;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +109,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 toast.setText("Goin to Orders");
                 toast.show();
                 goToOrders();
+                break;
+            case R.id.btnToWork:
+                toast.setText("Goin to Work");
+                toast.show();
+                goToWork();
                 break;
         }
     }
@@ -337,6 +335,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button btnToOrders = (Button) findViewById(R.id.btnToOrders);
         btnToOrders.setOnClickListener(this);
+
+        Button btnToWork = (Button) findViewById(R.id.btnToWork);
+        btnToWork.setOnClickListener(this);
     }
 
     private void goToOrders() {
@@ -344,9 +345,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(switchActivityIntent);
     }
 
+    private void goToWork() {
+        Intent switchActivityIntent = new Intent(this, WorkActivity.class);
+        startActivity(switchActivityIntent);
+    }
+
     private void setTextViewText(){
         TextView tv = findViewById(R.id.txtMoneyAmount_Main);
-        tv.setText(""+inventory.getMoney());
+        tv.setText(""+df.format(inventory.getMoney())+"$");
         TextView woodLogs = findViewById(R.id.txtWoodLogs);
         woodLogs.setText("Logs: " + inventory.getWoodLogs().size());
         TextView debLogs = findViewById(R.id.txtDebLogs);

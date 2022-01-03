@@ -88,7 +88,7 @@ public class OrdersActivity extends AppCompatActivity implements View.OnClickLis
         startActivity(switchActivityIntent);
     }
 
-   /* public void progressBarAnimation(ProgressBar progressBar) {
+    /*public void progressBarAnimation(ProgressBar progressBar) {
         progressBar.setVisibility(View.VISIBLE);
         ValueAnimator animator = ValueAnimator.ofInt(0, progressBar.getMax());
         animator.setDuration(5000);

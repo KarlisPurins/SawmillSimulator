@@ -237,4 +237,14 @@
         tools:layout_editor_absoluteX="181dp"
         tools:layout_editor_absoluteY="319dp" />
 
+    <Button
+        android:id="@+id/btnToWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="520dp"
+        android:text="@string/to_work_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
