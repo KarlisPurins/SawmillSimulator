@@ -39,7 +39,7 @@ public class WorkActivity extends AppCompatActivity implements View.OnClickListe
                 a.setAnimationListener(new AnimationListener() {
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        logClick();
+                        moneyClick();
                     }
                 });
                 v.startAnimation(a);
@@ -50,7 +50,7 @@ public class WorkActivity extends AppCompatActivity implements View.OnClickListe
             }
     }
 
-    private void logClick() {
+    private void moneyClick() {
         MainActivity.inventory.addMoney(0.10);
         tvMoney.setText(df.format(MainActivity.inventory.getMoney())+"$");
         showToast(R.string.clicked);
