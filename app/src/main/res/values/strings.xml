@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SawmillSimulator</string>
     <string name="log_button">Switch Add/Remove</string>
-    <string name="addLog_button">Add Log 10$</string>
+    <string name="addLog_button">Buy Log 10$</string>
     <string name="addDebarkedLog_button">Craft DebarkedLog</string>
     <string name="addCantedLog_button">Craft CantedLog</string>
     <string name="addPlank_button">Craft Plank</string>
