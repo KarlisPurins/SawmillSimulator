@@ -74,13 +74,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.btnAddLog:
-                WoodLog lg = new WoodLog();
-                if (clickCount == 0) {
-                    ctAddLog(textLogTimer, inventory, lg, view);
+                if (inventory.getMoney() < 10) {
+                    toast.setText("You don't have enough money to buy logs");
+                    toast.show();
+                    break;
                 } else {
-                    ctRemoveLog(textLogTimer, inventory, lg, view);
+                    WoodLog lg = new WoodLog();
+                    if (clickCount == 0) {
+                        ctAddLog(textLogTimer, inventory, lg, view);
+                    } else {
+                        ctRemoveLog(textLogTimer, inventory, lg, view);
+                    }
+                    break;
                 }
-                break;
             case R.id.btnAddDebLog:
                 DebarkedLog dl = new DebarkedLog();
                 if (clickCount == 0) {
